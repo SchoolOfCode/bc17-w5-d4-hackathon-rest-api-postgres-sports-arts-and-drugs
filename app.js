@@ -14,10 +14,10 @@ dotenv.config();
 // Import helper functions for artists
 import {
   getArtists,
-  getArtistsById,
+  getArtistById,
   createArtist,
-  updateArtistsById,
-  deleteArtistsById,
+  updateArtistById,
+  deleteArtistById,
 } from "./artists.js";
 
 // Import helper functions for sports
@@ -51,7 +51,7 @@ app.get("/artists", async function (req, res) {
 // Endpoint to retrieve an artist by id
 app.get("/artists/:id", async function (req, res) {
   try {
-    const artist = await getArtistsById(req.params.id);
+    const artist = await getArtistById(req.params.id);
     if (artist) {
       res.status(200).json({ status: "success", data: artist });
     } else {
@@ -75,7 +75,7 @@ app.post("/artists/", async function (req, res) {
 // Endpoint to update a specific artist by id
 app.patch("/artists/:id", async function (req, res) {
   try {
-    const updatedArtist = await updateArtistsById(req.params.id, req.body);
+    const updatedArtist = await updateArtistById(req.params.id, req.body);
     if (updatedArtist) {
       res.status(200).json({ status: "success", data: updatedArtist });
     } else {
@@ -89,7 +89,7 @@ app.patch("/artists/:id", async function (req, res) {
 // Endpoint to delete a specific artist by id
 app.delete("/artists/:id", async function (req, res) {
   try {
-    const deletedArtist = await deleteArtistsById(req.params.id);
+    const deletedArtist = await deleteArtistById(req.params.id);
     if (deletedArtist) {
       res.status(200).json({ status: "success", data: deletedArtist });
     } else {
